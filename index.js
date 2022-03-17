@@ -7,29 +7,38 @@ const axios=require("axios")
 var cors = require('cors')
 
 const cheerio=require("cheerio")
-const request=require("request")
+const Request=require("request")
+const { request } = require("express")
 // const { html } = require("cheerio/lib/api/manipulation")
 
 app.use(cors())
 
 
 mongo.connect();
+app.get("/getdetails",(req,res,next)=>{
+    res.send("Hello getdetials");
+})
+
+// sum min max 
 
 
 app.use("/",product)
 
 // getting working on amazon website to get data using cheerio
+
 app.get("/users", function(req,res,next){
-    request("https://www.amazon.in/s?k=furniture&crid=1T10RQ6AE2KEI&sprefix=furniture%2Caps%2C284",(error, response, html)=>{
+    Request("https://www.amazon.in/s?k=furniture&crid=1T10RQ6AE2KEI&sprefix=furniture%2Caps%2C284",(error, response, html)=>{
     const $=cheerio.load(html)
     const one=$(".s-card-container")
     console.log(one.unwrap)
-    var a=one.text().trim()
-    // a.replace(/(^[ \t]*\n)/gm, "")
+    var a=one.text()
+    
     res.send(a);
 })
     
 })
+
+
 
 // const data=()=>{
 //     const params = {

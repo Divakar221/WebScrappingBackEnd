@@ -31,8 +31,7 @@ module.exports.get=async(req,res,next)=>{
 // set up the request parameters
 try{
 
-   
-const data=()=>{
+
    
 const data=()=>{
     const params = {
@@ -59,8 +58,7 @@ const data=()=>{
         console.log(error);
       })
     
-    }
-  data()
+ 
   
 }
 data()
